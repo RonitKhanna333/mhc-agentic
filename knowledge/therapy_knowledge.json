@@ -1,0 +1,77 @@
+[
+  {
+    "title": "Cognitive Behavioral Therapy (CBT) Basics",
+    "content": "CBT focuses on identifying and changing negative thought patterns. Key principle: thoughts influence feelings and behaviors. Teach the cognitive triangle: thoughts → feelings → behaviors. Challenge automatic negative thoughts with evidence. Ask: What evidence supports this thought? What evidence contradicts it? What would you tell a friend in this situation?",
+    "metadata": {"category": "technique", "type": "CBT"}
+  },
+  {
+    "title": "Cognitive Distortions",
+    "content": "Common thinking errors: All-or-nothing thinking (black and white), overgeneralization (one event = always), mental filter (focusing only on negatives), jumping to conclusions (mind reading, fortune telling), catastrophizing (expecting the worst), personalization (blaming self for external events), should statements (rigid rules). Help identify and reframe these patterns.",
+    "metadata": {"category": "CBT", "type": "cognitive-distortions"}
+  },
+  {
+    "title": "Thought Record Technique",
+    "content": "Thought records help identify and challenge negative thoughts. Format: 1) Situation (what happened?), 2) Automatic thoughts (what went through your mind?), 3) Emotions (what did you feel? intensity 0-100), 4) Evidence for and against the thought, 5) Alternative balanced thought, 6) Outcome (new emotion intensity). Regular practice builds awareness and cognitive flexibility.",
+    "metadata": {"category": "CBT", "type": "technique"}
+  },
+  {
+    "title": "Behavioral Activation for Depression",
+    "content": "Combat depression through action. Depression reduces motivation and activity, creating a negative cycle. Behavioral activation reverses this: Schedule pleasant and meaningful activities, start small (5-10 minutes), focus on action not mood, track activities and mood, gradually increase difficulty. Activities should include: enjoyable activities, social connection, physical movement, and meaningful tasks aligned with values.",
+    "metadata": {"category": "technique", "type": "behavioral-activation"}
+  },
+  {
+    "title": "Progressive Muscle Relaxation",
+    "content": "PMR reduces physical tension and anxiety. Process: Find quiet space, tense each muscle group for 5 seconds, release and notice relaxation for 10 seconds. Sequence: hands/fists, arms, shoulders, face (forehead, eyes, jaw), neck, chest, stomach, back, legs, feet. Practice daily for 15-20 minutes. Helps recognize tension and promotes calm through body-mind connection.",
+    "metadata": {"category": "relaxation", "type": "PMR"}
+  },
+  {
+    "title": "Deep Breathing Techniques",
+    "content": "Diaphragmatic breathing activates relaxation response. Box breathing: Inhale 4 counts, hold 4, exhale 4, hold 4. 4-7-8 breathing: Inhale 4, hold 7, exhale 8. Belly breathing: Hand on belly, breathe so belly rises (not chest). Practice 5-10 minutes daily. Use during anxiety/stress. Slows heart rate, lowers blood pressure, reduces stress hormones.",
+    "metadata": {"category": "relaxation", "type": "breathing"}
+  },
+  {
+    "title": "Mindfulness Meditation",
+    "content": "Mindfulness is non-judgmental present-moment awareness. Basic practice: Focus on breath, notice when mind wanders, gently return to breath without judgment. Start with 5 minutes daily. Benefits: reduces rumination, increases emotional regulation, decreases anxiety and depression. Mindful observation: Use 5 senses to ground in present moment. Body scan: Systematically notice sensations throughout body.",
+    "metadata": {"category": "mindfulness", "type": "meditation"}
+  },
+  {
+    "title": "Grounding Techniques for Anxiety",
+    "content": "Grounding brings attention to present moment, interrupting anxiety spiral. 5-4-3-2-1 technique: Name 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste. Physical grounding: Hold ice cube, stomp feet, splash cold water on face. Mental grounding: Count backwards by 7, name categories (animals, colors), describe an object in detail. Use when feeling overwhelmed or dissociating.",
+    "metadata": {"category": "grounding", "type": "anxiety"}
+  },
+  {
+    "title": "Sleep Hygiene Principles",
+    "content": "Good sleep habits improve mood and functioning. Guidelines: Consistent sleep/wake schedule (even weekends), 7-9 hours sleep, cool dark quiet bedroom, no screens 1 hour before bed (blue light disrupts melatonin), avoid caffeine after 2pm, no alcohol near bedtime, regular exercise (not close to bedtime), relaxing bedtime routine, use bed only for sleep/sex (not work/TV), if can't sleep after 20 minutes, leave bed and return when sleepy.",
+    "metadata": {"category": "lifestyle", "type": "sleep"}
+  },
+  {
+    "title": "Problem-Solving Therapy",
+    "content": "Structured approach to practical problems. Steps: 1) Define the problem specifically, 2) Brainstorm all possible solutions (no judgment), 3) Evaluate pros/cons of each, 4) Choose best solution, 5) Make action plan with specific steps, 6) Implement and evaluate outcome. If unsuccessful, try different solution. Breaks overwhelming problems into manageable steps. Builds sense of control and self-efficacy.",
+    "metadata": {"category": "technique", "type": "problem-solving"}
+  },
+  {
+    "title": "Values Clarification Exercise",
+    "content": "Connect actions to personal values for motivation and meaning. Exercise: List important life domains (relationships, work, health, personal growth, leisure, spirituality). For each: What matters most? What kind of person do you want to be? What would you do if nothing held you back? Identify small concrete actions aligned with each value. When feeling stuck, ask: What would my best self do? What small step honors my values today?",
+    "metadata": {"category": "ACT", "type": "values"}
+  },
+  {
+    "title": "Gratitude Practice",
+    "content": "Gratitude shifts focus from negative to positive, improving mood and wellbeing. Practices: Daily gratitude journal (3 things each day), gratitude letter (write to someone who helped you), gratitude visit (read letter in person), mental gratitude pause (notice 3 good things), gratitude walk (appreciate surroundings). Be specific and savor the feeling. Regular practice rewires brain for positive attention.",
+    "metadata": {"category": "positive-psychology", "type": "gratitude"}
+  },
+  {
+    "title": "Exposure Hierarchy for Anxiety",
+    "content": "Gradual exposure reduces avoidance and fear. Steps: 1) List feared situations, 2) Rate anxiety for each (0-100), 3) Order from least to most anxiety-provoking, 4) Start with lowest item, 5) Stay in situation until anxiety decreases by half, 6) Repeat until anxiety is manageable, 7) Move to next level. Never force or go too fast. Success builds confidence. Avoidance maintains fear; exposure breaks the cycle.",
+    "metadata": {"category": "exposure", "type": "anxiety"}
+  },
+  {
+    "title": "Journaling for Mental Health",
+    "content": "Writing processes emotions and provides insight. Types: Stream of consciousness (write without stopping), gratitude journal, thought records, emotion diary (event-thought-feeling-behavior), problem-solving journal, values journal. Prompts: How am I feeling? What triggered this? What am I grateful for? What's in my control? What matters most? Benefits: emotional release, pattern recognition, problem-solving, self-compassion, tracking progress.",
+    "metadata": {"category": "technique", "type": "journaling"}
+  },
+  {
+    "title": "Self-Compassion Practice",
+    "content": "Treat yourself with same kindness you'd offer a friend. Components: 1) Mindfulness (acknowledge suffering without judgment), 2) Common humanity (suffering is part of human experience), 3) Self-kindness (be warm and understanding with yourself). Phrases: 'This is a moment of suffering', 'Suffering is part of life', 'May I be kind to myself'. Self-compassion break: place hand on heart, acknowledge difficulty, offer compassion. Reduces self-criticism and shame.",
+    "metadata": {"category": "self-compassion", "type": "technique"}
+  }
+]

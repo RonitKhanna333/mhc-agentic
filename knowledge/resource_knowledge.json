@@ -1,0 +1,77 @@
+[
+  {
+    "title": "Types of Mental Health Professionals",
+    "content": "Psychiatrist: Medical doctor (MD/DO), can prescribe medication, diagnoses and treats mental illness, often focuses on medication management. Psychologist: Doctoral degree (PhD/PsyD), provides therapy and psychological testing, cannot prescribe (except in some states). Licensed Clinical Social Worker (LCSW): Master's degree, provides therapy and case management. Licensed Professional Counselor (LPC/LPCC): Master's degree, provides therapy for various concerns. Marriage and Family Therapist (MFT): Master's degree, specializes in relationship and family issues.",
+    "metadata": {"category": "professionals", "type": "overview"}
+  },
+  {
+    "title": "Types of Therapy",
+    "content": "Cognitive Behavioral Therapy (CBT): Focus on thoughts-feelings-behaviors connection, evidence-based for depression/anxiety, structured and goal-oriented. Dialectical Behavior Therapy (DBT): Skills for emotion regulation, distress tolerance, interpersonal effectiveness; good for BPD, self-harm. Psychodynamic: Explores unconscious patterns, childhood experiences, insight-oriented. Acceptance and Commitment Therapy (ACT): Mindfulness, values-based action, psychological flexibility. EMDR: For trauma/PTSD, uses bilateral stimulation. Interpersonal Therapy (IPT): Focus on relationships and life transitions.",
+    "metadata": {"category": "therapy-types", "type": "overview"}
+  },
+  {
+    "title": "Finding a Therapist",
+    "content": "Options: 1) Insurance directory (call number on card), 2) Psychology Today therapist finder, 3) OpenPath Collective (low-cost therapy), 4) Community mental health centers (sliding scale), 5) University training clinics (reduced cost), 6) Employee Assistance Program (EAP), 7) Telehealth platforms (BetterHelp, Talkspace). Search filters: location, specialty, insurance, cost, approach, identity (LGBTQ+ affirming, culturally specific).",
+    "metadata": {"category": "finding-help", "type": "therapist"}
+  },
+  {
+    "title": "First Therapy Appointment",
+    "content": "What to expect: Intake assessment (background, current concerns, symptoms, goals), confidentiality discussion, treatment plan discussion, questions about approach and frequency. Bring: insurance info, medication list, questions to ask. Good questions: What's your experience with [my concern]? What approach do you use? How long does treatment typically take? What if we're not a good fit? It's okay to try multiple therapists to find the right match.",
+    "metadata": {"category": "therapy-process", "type": "first-session"}
+  },
+  {
+    "title": "Medication Management",
+    "content": "Psychiatric medications managed by: psychiatrist, primary care doctor (for common conditions), psychiatric nurse practitioner. Process: evaluation, diagnosis, prescription, monitoring for effectiveness and side effects, adjustments as needed. Common medications: Antidepressants (SSRIs, SNRIs), anti-anxiety (benzodiazepines, buspirone), mood stabilizers, antipsychotics. Important: Take as prescribed, don't stop suddenly, report side effects, give 4-6 weeks for full effect, medication + therapy often most effective.",
+    "metadata": {"category": "medication", "type": "overview"}
+  },
+  {
+    "title": "Insurance and Cost",
+    "content": "Using insurance: Call insurance to verify mental health coverage, ask about copay/deductible, get in-network provider list, check session limits. Without insurance: Community mental health centers (sliding scale based on income), training clinics (supervised students, reduced cost), OpenPath Collective ($30-80/session), online therapy (often cheaper), group therapy (usually less expensive than individual), ask therapists about sliding scale fees.",
+    "metadata": {"category": "cost", "type": "insurance"}
+  },
+  {
+    "title": "Community Mental Health Centers",
+    "content": "Public mental health centers provide affordable care regardless of ability to pay. Services: individual therapy, group therapy, medication management, case management, crisis services. Cost: Sliding scale based on income, Medicaid accepted, some free services. To find: Search '[your location] community mental health center' or call SAMHSA helpline 1-800-662-4357. Good option for those uninsured or underinsured.",
+    "metadata": {"category": "resources", "type": "community"}
+  },
+  {
+    "title": "Support Groups",
+    "content": "Peer support groups provide community and shared experience. Types: Depression and Bipolar Support Alliance (DBSA), Anxiety and Depression Association of America (ADAA), NAMI peer support, Alcoholics Anonymous (AA), Narcotics Anonymous (NA), Al-Anon (for families of alcoholics), grief support, trauma survivors, LGBTQ+ groups. Format: In-person or online, facilitated or peer-led, usually free. Find local groups through NAMI, hospitals, community centers, places of worship.",
+    "metadata": {"category": "support-groups", "type": "overview"}
+  },
+  {
+    "title": "Online Therapy Platforms",
+    "content": "Teletherapy options: BetterHelp, Talkspace, MDLive, Amwell, specific practice websites. Pros: Convenient, flexible scheduling, often more affordable, access from anywhere, good for those in rural areas or with transportation barriers. Cons: Not appropriate for crisis/severe mental illness, quality varies, less personal connection for some. Insurance may cover telehealth. Good option for mild-moderate symptoms and those with scheduling constraints.",
+    "metadata": {"category": "telehealth", "type": "online-therapy"}
+  },
+  {
+    "title": "NAMI - National Alliance on Mental Illness",
+    "content": "NAMI provides education, support, and advocacy. Services: Free peer support groups, family support groups, education programs (Family-to-Family, Peer-to-Peer), helpline (1-800-950-6264), local chapters nationwide, online community, resources and information. NAMI HelpLine: Monday-Friday 10am-10pm ET, info and referrals. All services free. Good resource for people with mental illness and their families.",
+    "metadata": {"category": "organization", "type": "NAMI"}
+  },
+  {
+    "title": "College Mental Health Services",
+    "content": "Students: Use college counseling center - usually free or low-cost, on-campus convenience, understand student issues. Services typically include: individual therapy (may be limited sessions), group therapy, crisis services, psychiatric services, workshops. If longer-term care needed, can provide referrals. Also check for peer support programs, wellness programs, accommodation services for mental health disabilities.",
+    "metadata": {"category": "student-resources", "type": "college"}
+  },
+  {
+    "title": "Employee Assistance Programs (EAP)",
+    "content": "Many employers offer EAP - free, confidential counseling benefit. Typically includes: 3-8 free therapy sessions, assessment and referrals, crisis support, work-life services. Completely confidential from employer. To access: HR can provide EAP contact info, call number for phone assessment, receive referral to local provider. Good starting point - free, no insurance needed, can transition to longer-term care if needed.",
+    "metadata": {"category": "workplace", "type": "EAP"}
+  },
+  {
+    "title": "Intensive Outpatient Programs (IOP)",
+    "content": "IOP for those needing more than weekly therapy but not hospitalization. Structure: 9-20 hours per week, 3-5 days, 2-4 hours per day, several weeks duration. Services: Group therapy, individual therapy, medication management, skills training, family therapy. Treats: Depression, anxiety, PTSD, eating disorders, substance abuse. More support than outpatient, less restrictive than inpatient. Most insurance covers. Ask therapist or call mental health facilities for IOP programs.",
+    "metadata": {"category": "treatment-levels", "type": "IOP"}
+  },
+  {
+    "title": "Inpatient Psychiatric Hospitalization",
+    "content": "Hospital admission for acute safety concerns or severe symptoms. Indications: Suicidal with plan/intent, severe self-harm, psychosis, inability to care for self, medication adjustment needs. Length: Usually 3-7 days for stabilization. Services: 24-hour monitoring, medication management, therapy, safety planning, discharge planning. Rights: Right to treatment, informed consent, least restrictive setting. Voluntary or involuntary. Goal: Stabilization and transition to outpatient care.",
+    "metadata": {"category": "treatment-levels", "type": "inpatient"}
+  },
+  {
+    "title": "Peer Support Specialists",
+    "content": "Peer support specialists are people with lived experience of mental illness providing support. Services: Share experience and hope, teach coping skills, help navigate system, advocacy, recovery-focused support. Find through: Community mental health centers, NAMI, state mental health departments, hospitals. Different from therapists - focus on shared experience and recovery, not clinical treatment. Can be powerful addition to treatment team.",
+    "metadata": {"category": "peer-support", "type": "specialist"}
+  }
+]

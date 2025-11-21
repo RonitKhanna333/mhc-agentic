@@ -1,0 +1,77 @@
+[
+  {
+    "title": "National Suicide Prevention Lifeline",
+    "content": "Call or text 988 for 24/7 free confidential support for people in distress, prevention and crisis resources. Trained crisis counselors available. Also call if concerned about someone else. Confidential, no judgment. Can help with: suicidal thoughts, mental health crisis, substance abuse crisis, emotional distress. Available in English and Spanish. Text and chat options available at 988lifeline.org",
+    "metadata": {"category": "crisis-hotline", "priority": "critical"}
+  },
+  {
+    "title": "Crisis Text Line",
+    "content": "Text HOME to 741741 for 24/7 crisis support via text message. Trained crisis counselors respond to texts. Anonymous and confidential. Good option for those who prefer texting over calling. Average response time: under 5 minutes. Can help with: depression, anxiety, suicidal thoughts, self-harm, abuse, eating disorders, relationship issues, LGBTQ+ concerns.",
+    "metadata": {"category": "crisis-hotline", "priority": "critical"}
+  },
+  {
+    "title": "Emergency Services",
+    "content": "Call 911 for immediate life-threatening emergencies: active suicide attempt, severe self-harm, immediate danger to self or others, medical emergency, violent situation. Go to nearest emergency room for urgent psychiatric evaluation. Many hospitals have psychiatric emergency services. Don't wait if situation is life-threatening.",
+    "metadata": {"category": "emergency", "priority": "critical"}
+  },
+  {
+    "title": "Trevor Project (LGBTQ+ Youth)",
+    "content": "Call 1-866-488-7386 or text START to 678-678 for LGBTQ+ youth crisis support. 24/7 service. Trained counselors understand LGBTQ+ specific issues. Confidential. Also offers TrevorChat online and TrevorSpace social network. Serves LGBTQ+ young people under 25. Addresses: suicidal thoughts, coming out, discrimination, bullying, identity questions.",
+    "metadata": {"category": "crisis-hotline", "population": "LGBTQ-youth"}
+  },
+  {
+    "title": "Veterans Crisis Line",
+    "content": "Call 988 and press 1, or text 838255 for veterans, service members, and their families. 24/7 confidential support. Staff trained in veteran-specific issues: PTSD, TBI, military sexual trauma, transition stress, deployment. Connects to VA resources. Online chat available at veteranscrisisline.net. Specifically for military community.",
+    "metadata": {"category": "crisis-hotline", "population": "veterans"}
+  },
+  {
+    "title": "SAMHSA National Helpline",
+    "content": "Call 1-800-662-4357 for mental health and substance abuse treatment referral service. 24/7, 365 days. Free, confidential. Provides: local treatment facility info, support groups, community organizations. Does not provide counseling but connects to services. Good for finding treatment options. Available in English and Spanish.",
+    "metadata": {"category": "referral-helpline", "priority": "high"}
+  },
+  {
+    "title": "Safety Planning Steps",
+    "content": "Create personalized safety plan: 1) Warning signs (thoughts, behaviors, situations that precede crisis), 2) Internal coping strategies (things you can do alone: exercise, music, journaling), 3) People/places for distraction (social contacts, public places), 4) People who can help (family, friends, crisis supporters), 5) Professionals to contact (therapist, doctor, crisis line), 6) Reduce access to lethal means (remove weapons, pills). Write down and keep accessible.",
+    "metadata": {"category": "safety-planning", "priority": "critical"}
+  },
+  {
+    "title": "Assessing Suicide Risk",
+    "content": "Ask directly about suicidal thoughts - doesn't increase risk. Key questions: Are you thinking about suicide? Do you have a plan? Do you have means? When do you plan to do it? Have you made preparations? Risk increases with: specific plan, available means, set timeframe, previous attempts, hopelessness, isolation, substance use, recent loss. High risk requires immediate intervention.",
+    "metadata": {"category": "risk-assessment", "priority": "critical"}
+  },
+  {
+    "title": "Means Restriction",
+    "content": "Reducing access to lethal means saves lives. Most suicide attempts are impulsive (5-10 minutes from decision to attempt). Delay access = save lives. Actions: Store medications in locked box, remove firearms from home (or use gun locks, store ammo separately), remove sharp objects if self-harm risk, limit access to high places. Ask trusted person to hold items temporarily during crisis.",
+    "metadata": {"category": "safety-intervention", "priority": "critical"}
+  },
+  {
+    "title": "Crisis De-escalation Techniques",
+    "content": "When someone is in crisis: 1) Stay calm and speak in soothing tone, 2) Listen without judgment, 3) Acknowledge their pain ('This must be incredibly difficult'), 4) Don't argue or minimize, 5) Ask what would help right now, 6) Offer hope ('These feelings won't last forever'), 7) Focus on immediate safety, 8) Don't leave them alone if high risk, 9) Remove dangerous items, 10) Connect to crisis resources or emergency services.",
+    "metadata": {"category": "intervention", "priority": "critical"}
+  },
+  {
+    "title": "Mobile Crisis Teams",
+    "content": "Many areas have mobile crisis teams that come to you - alternative to 911/ER. Staffed by mental health professionals. Can provide: on-site assessment, de-escalation, safety planning, referrals, sometimes medication. Less traumatic than police response. Search '[your location] mobile crisis team' or ask 988 for local options. May be called: Crisis Intervention Team, Mobile Crisis Unit, Psychiatric Emergency Services.",
+    "metadata": {"category": "crisis-service", "priority": "high"}
+  },
+  {
+    "title": "Hospital Emergency Department",
+    "content": "Go to ER for: active suicidal plan with intent, severe self-harm, psychotic symptoms with safety concerns, acute mania with impulsivity, inability to care for self. What to expect: psychiatric evaluation, safety assessment, possible admission or intensive outpatient referral, temporary medication, safety plan. Bring: insurance info, medication list, emergency contacts. You have right to request psychiatric evaluation.",
+    "metadata": {"category": "emergency-service", "priority": "high"}
+  },
+  {
+    "title": "After Crisis - Follow-up Care",
+    "content": "Post-crisis period is high risk. Essential steps: 1) Schedule follow-up within 24-48 hours, 2) Continue safety plan, 3) Remove or secure lethal means, 4) Daily check-ins with support person, 5) Start or continue therapy, 6) Medication evaluation if appropriate, 7) Build support network, 8) Address underlying issues, 9) Practice coping skills, 10) Know your warning signs. Crisis doesn't mean failure - it means you need more support.",
+    "metadata": {"category": "follow-up", "priority": "high"}
+  },
+  {
+    "title": "Supporting Someone in Crisis",
+    "content": "How to help: 1) Take all threats seriously, 2) Ask directly about suicide, 3) Listen without judgment, 4) Don't promise secrecy if safety at risk, 5) Stay with them or ensure someone does, 6) Remove dangerous items, 7) Call crisis line together, 8) Help connect to professional help, 9) Follow up after crisis, 10) Take care of yourself too. You can't fix it alone - get professional help involved.",
+    "metadata": {"category": "support", "priority": "high"}
+  },
+  {
+    "title": "International Crisis Resources",
+    "content": "If outside US: Befrienders Worldwide (befrienders.org) has crisis lines in 32 countries. International Association for Suicide Prevention (iasp.info) lists resources globally. Find local crisis line: Google '[your country] suicide prevention hotline'. Many countries have: 24/7 crisis lines, online chat/text support, emergency services (often 112 or local equivalent). Crisis support is available worldwide.",
+    "metadata": {"category": "international", "priority": "critical"}
+  }
+]

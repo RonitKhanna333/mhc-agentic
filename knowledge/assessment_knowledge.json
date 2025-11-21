@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Depression Symptoms Overview",
+    "content": "Common depression symptoms include persistent sadness, loss of interest in activities, changes in sleep patterns (insomnia or hypersomnia), changes in appetite, fatigue, difficulty concentrating, feelings of worthlessness or guilt, and thoughts of death or suicide. Symptoms must persist for at least 2 weeks for clinical diagnosis.",
+    "metadata": {"category": "symptoms", "condition": "depression"}
+  },
+  {
+    "title": "Anxiety Symptoms Overview",
+    "content": "Anxiety symptoms include excessive worry, restlessness, difficulty concentrating, irritability, muscle tension, sleep disturbances, rapid heartbeat, sweating, trembling, and panic attacks. Generalized Anxiety Disorder involves persistent worry about multiple areas of life for at least 6 months.",
+    "metadata": {"category": "symptoms", "condition": "anxiety"}
+  },
+  {
+    "title": "PHQ-9 Assessment Tool",
+    "content": "The Patient Health Questionnaire-9 (PHQ-9) is a 9-item depression screening tool. It asks about frequency of symptoms over the past 2 weeks: anhedonia, depressed mood, sleep problems, fatigue, appetite changes, feelings of failure, concentration problems, psychomotor changes, and suicidal thoughts. Scores: 0-4 minimal, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe depression.",
+    "metadata": {"category": "assessment", "tool": "PHQ-9"}
+  },
+  {
+    "title": "GAD-7 Assessment Tool",
+    "content": "The Generalized Anxiety Disorder-7 (GAD-7) is a 7-item anxiety screening tool. It measures frequency of anxiety symptoms over the past 2 weeks: feeling nervous, uncontrollable worry, excessive worry, trouble relaxing, restlessness, irritability, and feeling afraid. Scores: 0-4 minimal, 5-9 mild, 10-14 moderate, 15-21 severe anxiety.",
+    "metadata": {"category": "assessment", "tool": "GAD-7"}
+  },
+  {
+    "title": "Red Flags for Severe Depression",
+    "content": "Warning signs requiring immediate professional attention: suicidal ideation or plan, severe functional impairment (unable to work, care for self, or maintain relationships), psychotic symptoms (hallucinations, delusions), severe weight loss, complete social withdrawal, or comorbid substance abuse. These indicate need for urgent psychiatric evaluation.",
+    "metadata": {"category": "red-flags", "severity": "high"}
+  },
+  {
+    "title": "Screening Questions for Depression",
+    "content": "Key screening questions: 1) Over the past 2 weeks, have you felt down, depressed, or hopeless? 2) Have you had little interest or pleasure in doing things? 3) How has this affected your daily activities? 4) Have you noticed changes in sleep, appetite, or energy? 5) Have you had thoughts of being better off dead or hurting yourself?",
+    "metadata": {"category": "screening-questions"}
+  },
+  {
+    "title": "Screening Questions for Anxiety",
+    "content": "Key screening questions: 1) Do you worry excessively about everyday things? 2) Is it difficult to control your worry? 3) Do you experience physical symptoms like racing heart, sweating, or trembling? 4) How does anxiety affect your daily life? 5) Have you been avoiding situations due to anxiety?",
+    "metadata": {"category": "screening-questions"}
+  },
+  {
+    "title": "Bipolar Disorder Screening",
+    "content": "Screen for bipolar when depression is present. Ask about periods of elevated mood, increased energy, decreased need for sleep, racing thoughts, impulsive behavior, or increased risk-taking. Use Mood Disorder Questionnaire (MDQ). Bipolar requires different treatment than unipolar depression.",
+    "metadata": {"category": "screening", "condition": "bipolar"}
+  },
+  {
+    "title": "PTSD Screening Questions",
+    "content": "Ask about traumatic experiences and symptoms: intrusive memories or flashbacks, nightmares, avoidance of reminders, negative thoughts, hypervigilance, exaggerated startle response, difficulty sleeping. Use PC-PTSD-5 screening tool. PTSD requires specialized trauma-focused treatment.",
+    "metadata": {"category": "screening", "condition": "ptsd"}
+  },
+  {
+    "title": "Functional Impairment Assessment",
+    "content": "Assess impact on functioning: work/school performance, relationships, self-care, social activities, hobbies. Ask specific questions: Are you able to go to work/school? How are your relationships? Can you complete daily tasks? This helps determine severity and treatment urgency.",
+    "metadata": {"category": "assessment", "focus": "functioning"}
+  }
+]
