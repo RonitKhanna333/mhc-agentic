@@ -1,9 +1,13 @@
 import os
+import json
 from dotenv import load_dotenv
 
 from llm_clients import GroqClient, GeminiClient
-from collaborative_agents import MasterAgent
 
+# New Architecture Imports
+from safety import ImmediateCrisisDetector, ContentModeration, InputSanitizer, OutputSafetyScrubber
+from tools import *
+from core import Controller, ToolExecutionEngine
 
 def select_llm():
     provider = os.getenv('LLM_PROVIDER', 'groq').lower()
@@ -33,9 +37,33 @@ def main():
     # Debug mode toggle
     debug_mode = os.getenv('DEBUG_MODE', 'false').lower() == 'true'
     
-    expert_llm = select_llm()  # Smaller model for expert agents
-    master_llm = select_master_llm()  # Larger model for master synthesis
-    master_agent = MasterAgent(llm_client=expert_llm, master_llm_client=master_llm)
+    # Initialize LLMs
+    controller_llm = select_llm()  # Fast model for controller
+    master_llm = select_master_llm()  # Strong model for responder
+    
+    # Initialize Safety Components (Stage 1)
+    crisis_detector = ImmediateCrisisDetector()
+    content_moderator = ContentModeration()
+    input_sanitizer = InputSanitizer()
+    output_scrubber = OutputSafetyScrubber()
+    
+    # Initialize Tools
+    tool_registry = {
+        "EmotionTool": EmotionTool(),
+        "SentimentTool": SentimentTool(),
+        "MemoryReadTool": MemoryReadTool(controller_llm),
+        "MemoryWriteTool": MemoryWriteTool(controller_llm),
+        "PatternDetectorTool": PatternDetectorTool(),
+        "InterventionSelectorTool": InterventionSelectorTool(),
+        "AssessmentTool": AssessmentTool(),
+        "TherapyTool": TherapyTool(controller_llm),
+        "ResourceTool": ResourceTool(controller_llm),
+        "MasterResponderTool": MasterResponderTool(master_llm)
+    }
+    
+    # Initialize Core Components (Stage 2)
+    controller = Controller(controller_llm, tool_registry)
+    engine = ToolExecutionEngine(tool_registry)
 
     if debug_mode:
         print('\n' + '=' * 80)
@@ -64,10 +92,10 @@ def main():
     print()
     
     while True:
-        user = input('\n💬 You: ').strip()
-        if not user:
+        user_input = input('\n💬 You: ').strip()
+        if not user_input:
             continue
-        if user.lower() in ('exit', 'quit'):
+        if user_input.lower() in ('exit', 'quit'):
             print('\n💙 Thank you for sharing with me today.')
             print('Remember: I\'m always here when you need to talk.')
             print('\nIf you ever need immediate help:')
@@ -76,87 +104,65 @@ def main():
             print('\nTake care of yourself. You matter. 💙\n')
             break
         
-        result = master_agent.process(user)
+        # --- STAGE 1: FIXED SAFETY PIPELINE ---
+        
+        # 1. Crisis Detection
+        crisis_result = crisis_detector.check(user_input)
+        if crisis_result['risk_level'] == 'high':
+            print(f"\n⚠️ IMMEDIATE CRISIS DETECTED ({crisis_result.get('crisis_type')})")
+            print("Please contact emergency services immediately.")
+            print("Suicide & Crisis Lifeline: 988")
+            continue
+            
+        # 2. Content Moderation
+        mod_result = content_moderator.check(user_input)
+        if mod_result['blocked']:
+            print("\n⚠️ I cannot process this message due to safety guidelines.")
+            continue
+            
+        # 3. Input Sanitization
+        sanitized = input_sanitizer.sanitize(user_input)
+        safe_input = sanitized['safe_input']
         
         if debug_mode:
-            print('\n' + '=' * 80)
-            print('🔍 DEBUG: INTERNAL PROCESSING')
-            print('=' * 80)
+            print(f"\n[Safety] Risk: {crisis_result['risk_level']}, Safe Input: {safe_input}")
             
-            # Show NLP analysis
-            if result.get('nlp_analysis'):
-                nlp = result['nlp_analysis']
-                print('\n🧠 NLP ANALYSIS:')
-                
-                sentiment = nlp.get('sentiment', {})
-                print(f'  Sentiment Score: {sentiment.get("score", 0):.2f} ({sentiment.get("emotion", "neutral")})')
-                print(f'  Urgency Level: {sentiment.get("urgency", "normal")}')
-                if sentiment.get('crisis_detected'):
-                    print('  ⚠️  CRISIS DETECTED!')
-                
-                if nlp.get('topics'):
-                    print(f'  Detected Topics: {", ".join(nlp["topics"])}')
-                
-                if nlp.get('patterns'):
-                    print(f'  Conversation Patterns: {", ".join(nlp["patterns"])}')
-                
-                personalization = nlp.get('personalization', {})
-                if personalization.get('preferred_tone'):
-                    print(f'  User Preference: {personalization["preferred_tone"]} tone')
-                if personalization.get('effective_techniques'):
-                    print(f'  Effective Techniques: {", ".join(personalization["effective_techniques"][:3])}')
-                
-                if nlp.get('learned_recommendations'):
-                    print(f'  Learned Recommendations: {len(nlp["learned_recommendations"])} available')
-            
-            # Show assessment analysis
-            if result.get('assessment_analysis'):
-                print('\n📊 ASSESSMENT TRACKER ANALYSIS:')
-                analysis = result['assessment_analysis']
-                if analysis.get('symptoms'):
-                    print(f'  Detected Symptoms: {", ".join(analysis["symptoms"])}')
-                if analysis.get('severity_indicators'):
-                    print(f'  Severity Indicators: {", ".join(analysis["severity_indicators"])}')
-                if analysis.get('assessment_relevance'):
-                    print(f'  Assessment Relevance: {len(analysis["assessment_relevance"])} indicators matched')
-            
-            # Show which agents were consulted
-            print(f'\n🤖 AGENTS CONSULTED: {", ".join([a.upper() for a in result["agents_consulted"]])}')
-            
-            # Show each expert contribution
-            print('\n💬 EXPERT CONTRIBUTIONS:')
-            for i, contrib in enumerate(result['contributions'], 1):
-                print(f'\n  [{i}] {contrib["agent_type"].upper()} EXPERT:')
-                print(f'      Contribution: "{contrib["contribution"]}"')
-                if contrib.get('context_used'):
-                    print(f'      Knowledge Used: {", ".join(contrib["context_used"][:3])}')
-                if contrib.get('relevance_scores'):
-                    scores = [f'{s:.2f}' for s in contrib['relevance_scores'][:3]]
-                    print(f'      Relevance Scores: {", ".join(scores)}')
-            
-            # Show assessment summary
-            if result.get('assessment_summary'):
-                print(f'\n📋 BACKGROUND ASSESSMENT:')
-                print(f'    {result["assessment_summary"]}')
-            
-            # Show mood tracking
-            if result.get('mood_summary'):
-                print(f'\\n📈 MOOD TRACKING:')
-                for line in result['mood_summary'].split('\\n'):
-                    print(f'    {line}')
-            
-            # Show conversation context stats
-            print(f'\n📝 CONVERSATION STATS:')
-            print(f'    Total Messages: {len(master_agent.memory.messages)}')
-            print(f'    Summaries Created: {len(master_agent.memory.summaries)}')
-            if master_agent.memory.summaries:
-                print(f'    Latest Summary: "{master_agent.memory.summaries[-1]["summary"][:100]}..."')
-            
-            print('\n' + '=' * 80)
-            print('🔍 END DEBUG INFO')
-            print('=' * 80)
+        # --- STAGE 2: AGENTIC ORCHESTRATION ---
         
-        print(f'\n💙 {result["text"]}\n')
+        # 1. Controller Decision
+        # For now, we pass a dummy session summary. In real app, fetch from memory.
+        session_summary = "Session in progress." 
+        
+        plan = controller.decide(safe_input, crisis_result['risk_level'], session_summary)
+        
+        if debug_mode:
+            print("\n[Controller Plan]")
+            print(json.dumps(plan, indent=2))
+            
+        # 2. Tool Execution
+        context = {
+            "risk_level": crisis_result['risk_level'],
+            "session_summary": session_summary
+        }
+        execution_result = engine.execute_plan(plan, safe_input, context)
+        
+        if debug_mode:
+            print("\n[Tool Results]")
+            print(json.dumps(execution_result['tool_results'], indent=2, default=str))
+            
+        # 3. Final Response
+        final_response = execution_result.get('final_response', {})
+        reply_text = final_response.get('reply_text', "I'm sorry, I couldn't generate a response.")
+        
+        # 4. Output Safety Scrubbing
+        scrubbed = output_scrubber.scrub(reply_text)
+        if not scrubbed['approved']:
+            print(f"\n⚠️ Output blocked by safety scrubber: {scrubbed.get('violation')}")
+            if debug_mode:
+                print(f"Original: {scrubbed.get('original_response')}")
+            reply_text = scrubbed['safe_response']
+        
+        print(f'\n💙 {reply_text}\n')
 
 
 if __name__ == '__main__':

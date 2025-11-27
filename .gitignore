@@ -1,6 +1,13 @@
-# Environment variables
-.env
-.env.local
+# Large binary files
+Antigravity.exe
+*.pdf
+
+# Test outputs
+test_output.txt
+
+# IDE
+.vscode/
+.idea/
 
 # Python
 __pycache__/
@@ -10,24 +17,8 @@ __pycache__/
 .Python
 env/
 venv/
-ENV/
-build/
-dist/
 *.egg-info/
-
-# Sessions and logs
-sessions/
-*.log
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Streamlit
-.streamlit/secrets.toml
