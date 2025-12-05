@@ -3,8 +3,13 @@ Training script for Agent-Lightning integration.
 Loads traces and runs optimization algorithms.
 """
 import os
+import sys
 import argparse
 from pathlib import Path
+
+# Add parent directory to path so we can import from instrumentation
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from instrumentation import TraceStore
 from instrumentation.reward_functions import compute_combined_reward
 
