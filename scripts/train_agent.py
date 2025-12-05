@@ -55,43 +55,97 @@ def run_apo_training(traces, output_dir="optimized_prompts"):
         traces: List of traces with rewards
         output_dir: Where to save optimized prompts
     """
+    from agent_lightning import APOOptimizer
+    from core.controller import Controller
+    
     print("\n" + "="*60)
     print("Running APO (Automatic Prompt Optimization)")
     print("="*60)
     
-    # TODO: integrate with Agent-Lightning APO algorithm
-    # This is a placeholder showing the structure
+    # Get baseline Controller prompt
+    # This is the prompt we want to optimize
+    controller = Controller(None, {})
+    baseline_prompt = controller.system_prompt
     
-    print(f"\nNote: Full APO integration requires Agent-Lightning setup.")
-    print(f"See examples at: https://microsoft.github.io/agent-lightning/")
-    
-    # For now, just analyze which prompts perform best
+    # Filter traces by component
     controller_traces = [t for t in traces if t.get("component") == "Controller"]
-    responder_traces = [t for t in traces if t.get("component") == "MasterResponder"]
     
-    print(f"\nController traces: {len(controller_traces)}")
-    print(f"MasterResponder traces: {len(responder_traces)}")
+    if not controller_traces:
+        print("❌ No Controller traces found. Run agent with tracing enabled first.")
+        return
     
-    if controller_traces:
-        avg_controller_reward = sum(t["reward"] for t in controller_traces) / len(controller_traces)
-        print(f"Avg Controller reward: {avg_controller_reward:.3f}")
+    print(f"\nOptimizing Controller prompt using {len(controller_traces)} traces")
     
-    if responder_traces:
-        avg_responder_reward = sum(t["reward"] for t in responder_traces) / len(responder_traces)
-        print(f"Avg MasterResponder reward: {avg_responder_reward:.3f}")
+    # Initialize APO optimizer
+    optimizer = APOOptimizer(
+        baseline_prompt=baseline_prompt,
+        population_size=8,
+        num_generations=5,
+        mutation_rate=0.3
+    )
     
-    # Save best-performing prompts for manual inspection
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    # Run optimization
+    best_variant = optimizer.optimize(controller_traces)
     
-    # Find top 10 best traces
-    top_traces = sorted(traces, key=lambda t: t.get("reward", 0), reverse=True)[:10]
+    # Save results
+    optimizer.save_results(output_dir)
     
-    print(f"\nTop 10 traces saved to {output_dir}/top_traces.json")
-    import json
-    with open(f"{output_dir}/top_traces.json", "w") as f:
-        json.dump(top_traces, f, indent=2)
+    # Compare baseline vs optimized
+    print("\n📊 Comparison:")
+    print(f"  Baseline: {optimizer.population[0].avg_reward:.3f}")
+    print(f"  Optimized: {best_variant.avg_reward:.3f}")
+    print(f"  Improvement: +{(best_variant.avg_reward - optimizer.population[0].avg_reward)*100:.1f}%")
     
-    print("\n✅ Analysis complete!")
+    print(f"\n💾 Best prompt saved to: {output_dir}/best_prompt.txt")
+    print(f"📊 Full results in: {output_dir}/")
+    
+    return best_variant
+
+
+def run_rl_training(traces, output_dir="learned_policy"):
+    """
+    Run RL training to learn better tool selection policy.
+    
+    Args:
+        traces: List of traces with rewards
+        output_dir: Where to save learned policy
+    """
+    from agent_lightning import PPOTrainer
+    
+    print("\n" + "="*60)
+    print("Running RL Training (PPO)")
+    print("="*60)
+    
+    # Define action space (tools that Controller can select)
+    action_space = [
+        "EmotionTool",
+        "SentimentTool",
+        "PatternDetectorTool",
+        "MemoryReadTool",
+        "TherapyTool",
+        "ResourceTool",
+        "AssessmentTool",
+        "InterventionSelectorTool"
+    ]
+    
+    # Initialize PPO trainer
+    trainer = PPOTrainer(
+        action_space=action_space,
+        learning_rate=0.0003,
+        gamma=0.99,
+        epsilon=0.2,
+        num_epochs=10
+    )
+    
+    # Train on traces
+    trainer.train_on_traces(traces)
+    
+    # Save learned policy
+    trainer.save_policy(output_dir)
+    
+    print(f"\n💾 Policy saved to: {output_dir}/learned_policy.json")
+    
+    return trainer
 
 
 def main():
@@ -100,8 +154,8 @@ def main():
     parser.add_argument("--start-date", help="Start date filter (YYYYMMDD)")
     parser.add_argument("--end-date", help="End date filter (YYYYMMDD)")
     parser.add_argument("--output-dir", default="optimized_prompts", help="Output directory")
-    parser.add_argument("--mode", choices=["apo", "rl", "analyze"], default="analyze",
-                       help="Training mode: apo=prompt optimization, rl=policy learning, analyze=stats only")
+    parser.add_argument("--mode", choices=["apo", "rl", "analyze", "all"], default="analyze",
+                       help="Training mode: apo=prompt optimization, rl=policy learning, analyze=stats only, all=run both")
     
     args = parser.parse_args()
     
@@ -130,13 +184,14 @@ def main():
     )
     
     # Run training based on mode
-    if args.mode == "apo":
+    if args.mode == "apo" or args.mode == "all":
         run_apo_training(scored_traces, output_dir=args.output_dir)
-    elif args.mode == "rl":
-        print("\n🚧 RL training not yet implemented")
-        print("This would use Agent-Lightning's RL algorithms")
-    elif args.mode == "analyze":
-        print("\n✅ Analysis complete. Use --mode=apo to run optimization.")
+    
+    if args.mode == "rl" or args.mode == "all":
+        run_rl_training(scored_traces, output_dir="learned_policy")
+    
+    if args.mode == "analyze":
+        print("\n✅ Analysis complete. Use --mode=apo or --mode=rl to run optimization.")
 
 
 if __name__ == "__main__":
