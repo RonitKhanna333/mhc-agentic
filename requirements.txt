@@ -10,3 +10,4 @@ requests>=2.31.0
 
 # Agent optimization and training
 agentlightning
+parlant>=1.0.0
