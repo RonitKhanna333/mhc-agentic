@@ -96,6 +96,25 @@ async def assess_risk(context: p.ToolContext, message: str) -> p.ToolResult:
 async def main():
     print("🚀 Starting Parlant Agent...")
     
+    # Check if we have API keys configured
+    groq_key = os.getenv('GROQ_API_KEY')
+    openai_key = os.getenv('OPENAI_API_KEY')
+    
+    if not openai_key and not groq_key:
+        print("❌ ERROR: No API key found!")
+        print("\nParlant requires an OpenAI-compatible API.")
+        print("You can either:")
+        print("  1. Set OPENAI_API_KEY in your .env file")
+        print("  2. Or set: OPENAI_API_KEY=<your_groq_key>  (Groq is OpenAI-compatible)")
+        print("     OPENAI_BASE_URL=https://api.groq.com/openai/v1")
+        return
+    
+    # If only Groq is set, use it for Parlant
+    if not openai_key and groq_key:
+        os.environ['OPENAI_API_KEY'] = groq_key
+        os.environ['OPENAI_BASE_URL'] = 'https://api.groq.com/openai/v1'
+        print("✓ Using Groq API for Parlant (OpenAI-compatible mode)")
+    
     async with p.Server() as server:
         agent = await server.create_agent(
             name="MHC-Agentic-Assistant",
