@@ -1,5 +1,9 @@
 # Parlant Integration Guide
 
+> **⚠️ KNOWN ISSUE**: Parlant 3.0.4 has a dependency conflict with modern versions of Starlette/FastAPI. The integration code is provided as a reference, but may require Parlant to be updated to a newer version or run in a separate virtual environment.
+>
+> **Alternative**: Use the main `run_agent.py` which works perfectly with the hybrid architecture.
+
 ## Overview
 
 This project now integrates with **Parlant**, a framework for building structured, guideline-driven agents. This integration wraps the existing `mhc-agentic` tools and provides a new way to run the agent with explicit behavioral guidelines.

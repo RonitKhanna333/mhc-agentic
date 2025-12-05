@@ -10,4 +10,5 @@ requests>=2.31.0
 
 # Agent optimization and training
 agentlightning
-parlant>=1.0.0
+# parlant>=1.0.0  # DISABLED: Dependency conflict with Starlette/FastAPI
+# starlette<0.37.0  # Required for parlant compatibility
