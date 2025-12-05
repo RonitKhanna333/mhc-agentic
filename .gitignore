@@ -5,6 +5,16 @@ Antigravity.exe
 # Test outputs
 test_output.txt
 
+# Environment files (contains secrets)
+.env
+
+# Session data (may contain PII)
+sessions/
+
+# Traces (may contain user data)
+traces/
+test_traces/
+
 # IDE
 .vscode/
 .idea/

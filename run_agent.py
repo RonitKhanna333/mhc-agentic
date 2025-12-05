@@ -9,6 +9,9 @@ from safety import ImmediateCrisisDetector, ContentModeration, InputSanitizer, O
 from tools import *
 from core import Controller, ToolExecutionEngine
 
+# Agent-Lightning Instrumentation
+from instrumentation import create_traced_client, TraceStore
+
 def select_llm():
     provider = os.getenv('LLM_PROVIDER', 'groq').lower()
     if provider == 'groq':
@@ -37,9 +40,16 @@ def main():
     # Debug mode toggle
     debug_mode = os.getenv('DEBUG_MODE', 'false').lower() == 'true'
     
-    # Initialize LLMs
-    controller_llm = select_llm()  # Fast model for controller
-    master_llm = select_master_llm()  # Strong model for responder
+    # Initialize trace store (if tracing enabled)
+    trace_store = TraceStore(trace_dir="traces")
+    
+    # Initialize LLMs with optional tracing
+    base_controller_llm = select_llm()  # Fast model for controller
+    base_master_llm = select_master_llm()  # Strong model for responder
+    
+    # Wrap with tracing (controlled by ENABLE_TRACING env var)
+    controller_llm = create_traced_client(base_controller_llm, "Controller", trace_store)
+    master_llm = create_traced_client(base_master_llm, "MasterResponder", trace_store)
     
     # Initialize Safety Components (Stage 1)
     crisis_detector = ImmediateCrisisDetector()
