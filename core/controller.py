@@ -12,11 +12,15 @@ class Controller:
         self.llm = llm_client
         self.tool_registry = tool_registry
         self.system_prompt = """You are the Controller Agent for a mental health support chatbot.
+
+CRITICAL: Output ONLY valid JSON. No explanations, no markdown, no extra text.
+
 ROLE: Decide which tools to call to best respond to the user's message.
+
 CONSTRAINTS:
 - Safety checks (crisis, moderation) ALREADY RAN - you cannot bypass them
 - You may call ANY tool from the registry EXCEPT system-only tools
-- Output ONLY valid JSON (no markdown, no explanations outside JSON)
+- Output ONLY valid JSON (no markdown, no explanations, no code blocks)
 - Prefer fewer tool calls if not needed
 - Always end with "MasterResponderTool" as final_action
 
@@ -33,15 +37,17 @@ INPUT:
 TASK:
 Analyze the user's message and decide which tools to call.
 
-OUTPUT FORMAT (JSON only):
+OUTPUT FORMAT (STRICT JSON, NO MARKDOWN):
 {{
 "tool_sequence": [
-{{"name": "ToolName1", "input": {{...}}, "reason": "why calling this"}},
-{{"name": "ToolName2", "input": {{...}}, "reason": "why calling this"}}
+{{"name": "ToolName1", "input": {{}}, "reason": "why calling this"}},
+{{"name": "ToolName2", "input": {{}}, "reason": "why calling this"}}
 ],
 "final_action": "MasterResponderTool",
 "overall_strategy": "brief 1-sentence explanation of approach"
 }}
+
+REMEMBER: Output ONLY the JSON object above. No ```json``` markers, no explanations.
 """
 
     def _get_tool_descriptions(self) -> str:
@@ -72,16 +78,36 @@ OUTPUT FORMAT (JSON only):
                 text = response['candidates'][0]['content']['parts'][0]['text']
         else:
             text = str(response)
-            
-        # Clean up markdown code blocks if present
-        text = text.replace("```json", "").replace("```", "").strip()
+        
+        # Clean up and extract JSON
+        text = text.strip()
+        
+        # Remove markdown code blocks
+        if "```json" in text:
+            text = text.split("```json")[1].split("```")[0].strip()
+        elif "```" in text:
+            text = text.split("```")[1].split("```")[0].strip()
+        
+        # Try to extract JSON object if there's extra text
+        import re
+        json_match = re.search(r'\{[\s\S]*\}', text)
+        if json_match:
+            text = json_match.group(0)
         
         try:
             plan = json.loads(text)
+            
+            # Validate plan structure
+            if not isinstance(plan.get('tool_sequence'), list):
+                raise ValueError("tool_sequence must be a list")
+            if 'final_action' not in plan:
+                plan['final_action'] = 'MasterResponderTool'
+            
             return plan
-        except json.JSONDecodeError:
+        except (json.JSONDecodeError, ValueError) as e:
             # Fallback plan if JSON fails
-            print(f"Error parsing JSON plan: {text}")
+            print(f"⚠️  Error parsing JSON plan: {str(e)[:100]}")
+            print(f"Raw response (first 200 chars): {text[:200]}")
             return {
                 "tool_sequence": [],
                 "final_action": "MasterResponderTool",
